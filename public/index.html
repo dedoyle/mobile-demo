@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+
+    <!-- 忽略自动识别电话 -->
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- 忽略自动识别邮箱 -->
+    <meta name="format-detection" content="email=no" />
+
+    <!-- 忽略自动识别电话和邮箱 -->
+    <meta name="format-detection" content="telephone=no, email=no" />
+
+    <!-- 保存网站到桌面时添加图标 -->
+    <!-- <link rel="apple-touch-icon" sizes="76x76" href="pig.jpg" /> -->
+
+    <!-- 强制QQ浏览器竖屏 -->
+    <meta name="x5-orientation" content="landscape" />
+
+    <!-- 强制UC浏览器竖屏 -->
+    <meta name="screen-orientation" content="landscape" />
+
+    <title>Document</title>
+  </head>
+  <body id="J_wrapper">
+    <div id="root">
+      <p>kdkdkdkdk</p>
+      <p>kdkdkdkdk</p>
+      <p>kdkdkdkdk</p>
+      <p>kdkdkdkdk</p>
+    </div>
+    <script>
+      // 利用 CSS3 旋转 对根容器逆时针旋转 90 度
+      var detectOrient = function () {
+        var width = document.documentElement.clientWidth,
+          height = document.documentElement.clientHeight,
+          $wrapper = document.getElementById('J_wrapper'),
+          style = ''
+        if (width >= height) {
+          // 横屏
+          style += 'width:' + width + 'px;' // 注意旋转后的宽高切换
+          style += 'height:' + height + 'px;'
+          style += '-webkit-transform: rotate(0); transform: rotate(0);'
+          style += '-webkit-transform-origin: 0 0;'
+          style += 'transform-origin: 0 0;'
+        } else {
+          // 竖屏
+          style += 'width:' + height + 'px;'
+          style += 'height:' + width + 'px;'
+          style += '-webkit-transform: rotate(90deg); transform: rotate(90deg);'
+          // 注意旋转中点的处理
+          style +=
+            '-webkit-transform-origin: ' + width / 2 + 'px ' + width / 2 + 'px;'
+          style += 'transform-origin: ' + width / 2 + 'px ' + width / 2 + 'px;'
+        }
+        $wrapper.style.cssText = style
+      }
+      window.onresize = detectOrient
+      detectOrient()
+    </script>
+  </body>
+</html>
